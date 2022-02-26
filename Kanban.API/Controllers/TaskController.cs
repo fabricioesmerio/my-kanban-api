@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using Kanban.API.Data;
 using Kanban.API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -8,25 +8,21 @@ namespace Kanban.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ListController : ControllerBase
+    public class TaskController : ControllerBase
     {
+
         private readonly DataContext _context;
 
-        public ListController(DataContext context)
+        public TaskController(DataContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public IEnumerable<List> Get()
+        public IEnumerable<TaskEntity> Get()
         {
-            return _context.Lists;
+            return _context.Tasks;
         }
 
-        [HttpGet("{id}")]
-        public List GetbyId(int id)
-        {
-            return _context.Lists.FirstOrDefault(list => list.Id == id);
-        }
     }
 }

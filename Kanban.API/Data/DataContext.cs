@@ -10,5 +10,7 @@ namespace Kanban.API.Data
 
         }
         public DbSet<List> Lists { get; set; }
+        public DbSet<TaskEntity> Tasks { get; set; }
+
     }
 }
